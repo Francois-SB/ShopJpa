@@ -1,5 +1,7 @@
 package fr.fms;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -83,10 +85,65 @@ public class SpringShopJpaApplication implements CommandLineRunner {
 //		for(Article article : articleRepository.findByCategoryId((long)3)) {
 //			System.out.println(article);
 //		}
-		System.out.println("findByCategory");
-		System.out.println();
-		for(Article article : articleRepository.findByCategory("pc")) {
-			System.out.println(article);
-		}
+//		System.out.println("findByDescriptionContainingAndBrandContaining");
+//		System.out.println();
+//		for(Article article : articleRepository.findByDescriptionContainingAndBrandContaining("i","a")) {
+//			System.out.println(article);
+//		}
+//		
+//		Optional<Category> optionalEntity = categoryRepository.findById((long)4);
+//		Category pc = optionalEntity.get();
+//		
+
+//		articleRepository.save(new Article("R600", "Asus", 500, pc));	
+//		
+		
+		//1.2 TODO
+		//articleRepository.toString(articleRepository.findById((long)23).getClass());
+		//1.3 in articleRepository
+		//1.4
+		//articleRepository.deleteById((long)23);
+		//1.5
+//		System.out.println("display 1");
+//		System.out.println();
+//		for(Article article : articleRepository.findByCategoryId((long)4)) {
+//			System.out.println(article);
+//		}
+//		//get an article
+//		Optional<Article> optionalEntity = articleRepository.findById((long)24);
+//		Article article1 = optionalEntity.get();
+//		//modify
+//		article1.setDescription("eeePC");
+//		articleRepository.save(article1);
+//
+//		for(Article article : articleRepository.findByCategoryId((long)4)) {
+//			System.out.println(article);
+//		}
+		
+		//1.5 bis
+//			//get an article
+//			Optional<Article> optionalEntity = articleRepository.findById((long)24);
+//			Article article1 = optionalEntity.get();
+//			//modify
+//			article1.setDescription("eeePC");
+//			System.out.println("display 1");
+//			System.out.println();
+//	
+//				System.out.println(articleRepository.findById((long)24));
+//				article1.setDescription("eeePC");
+//			articleRepository.oioioi(article1);
+//			System.out.println();
+//			System.out.println(articleRepository.findById((long)24));
+		//1.6
+		for(Category category : categoryRepository.findAllByOrderByName()) {
+		System.out.println(category);
+	}
+		for(Category category : categoryRepository.findAllByOrderByNameDesc()) {
+		System.out.println(category);
+	}
+		//1.7
+		for(Category category : categoryRepository.findByNameNot("pc")) {
+		System.out.println(category);
+	}
 	}
 }
