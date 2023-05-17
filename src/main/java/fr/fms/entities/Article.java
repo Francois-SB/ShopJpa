@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Article implements Serializable {
@@ -16,13 +17,24 @@ public class Article implements Serializable {
 	private String brand;
 	private double price;
 	
-	public Article(String description, String brand, double price) {
+	@ManyToOne
+	private Category category;
+	
+	
+	public Article(String description, String brand, double price, Category category) {
 		this.description = description;
 		this.brand = brand;
 		this.price = price;
+		this.category = category;
 	}
 	public Article() {}
 
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	public long getId() {
 		return id;
 	}
@@ -56,8 +68,10 @@ public class Article implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", description=" + description + ", brand=" + brand + ", price=" + price + "]";
+		return "Article [id=" + id + ", description=" + description + ", brand=" + brand + ", price=" + price
+				+ "]";
 	}
+
 	
 	
 }
